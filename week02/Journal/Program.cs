@@ -1,5 +1,7 @@
 using System;
 using System.Reflection.Metadata.Ecma335;
+using System.IO;
+using System.Reflection.Metadata;
 
 class Program
 {
@@ -43,6 +45,20 @@ class Program
             {
                 theJournal.DisplayAll();
             }
+
+            if (menu == "3")
+            {
+                Console.WriteLine("Whats the filename?");
+                theJournal.LoadFromFile(Console.ReadLine());
+            }
+
+            if (menu == "4")
+            {
+                Console.WriteLine("Whats the filename?");
+                theJournal.SaveToFile(Console.ReadLine());
+            }
         }
+
+        Console.WriteLine("Thanks for using the program.");
     }
 }
