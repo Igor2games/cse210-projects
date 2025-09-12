@@ -1,7 +1,9 @@
 public class PromptGenerator
 {
-    public List<string> _prompts;
+    private List<string> _prompts;
+    private List<string> _shuffledPrompts;
     private static readonly Random _random = new Random();
+    private int _currentIndex = 0;
 
     public PromptGenerator()
     {
@@ -13,12 +15,24 @@ public class PromptGenerator
             "What was the strongest emotion I felt today?",
             "If I had one thing I could do over today, what would it be?"
         };
+
+        ShufflePrompts();
     }
 
+    private void ShufflePrompts()
+    {
+        _shuffledPrompts = _prompts.OrderBy(x => _random.Next()).ToList();
+        _currentIndex = 0;
+    }
 
     public string GetRandomPrompt()
     {
-        int index = _random.Next(_prompts.Count);
-        return _prompts[index];
+        if (_currentIndex >= _shuffledPrompts.Count)
+        {       
+            // Restart cycle with a new shuffle
+            ShufflePrompts(); 
+        }
+
+        return _shuffledPrompts[_currentIndex++];
     }
 }

@@ -3,25 +3,28 @@ using System.Reflection.Metadata.Ecma335;
 using System.IO;
 using System.Reflection.Metadata;
 
+// Modified PrompGenerator class to not repeat an item
+// if it repeats the list gets shuffled and starts again.
 class Program
 {
     static void Main(string[] args)
     {
         string menu = "";
-        //Add Journal
+        // Create classes
         Journal theJournal = new Journal();
+        PromptGenerator randomPrompt = new PromptGenerator();
 
         while (menu != "5")
         {
+            // Menu
             Console.WriteLine("Please select one of the following choices:\n1. Write\n2. Display\n3. Load\n4. Save\n5. Quit");
             Console.Write("What would you like to do? ");
             menu = Console.ReadLine();
 
             if (menu == "1")
             {
-                //Add entry and prompts
+                // Add entry and prompts
                 Entry anEntry = new Entry();
-                PromptGenerator randomPrompt = new PromptGenerator();
                 string prompt = randomPrompt.GetRandomPrompt();
 
                 //Entry date
@@ -32,7 +35,7 @@ class Program
                 //Generate random prompt
                 Console.WriteLine(prompt);
                 anEntry._promptText = prompt;
-                Console.Write(">");
+                Console.Write("> ");
                 string text = Console.ReadLine();
                 anEntry._entryText = text;
 
@@ -43,17 +46,20 @@ class Program
 
             if (menu == "2")
             {
+                // Display Entry
                 theJournal.DisplayAll();
             }
 
             if (menu == "3")
             {
+                // Load File
                 Console.WriteLine("Whats the filename?");
                 theJournal.LoadFromFile(Console.ReadLine());
             }
 
             if (menu == "4")
             {
+                // Save File
                 Console.WriteLine("Whats the filename?");
                 theJournal.SaveToFile(Console.ReadLine());
             }
