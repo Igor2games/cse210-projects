@@ -5,30 +5,38 @@ public class Word
     private string _text;
     private bool _isHidden;
 
-    
+
     public Word(string text)
     {
         _text = text;
+        _isHidden = false;
     }
 
 
     public void Hide()
     {
-
+        _isHidden = true;
     }
 
     public void Show()
     {
-
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return false;
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return $"{_text}";
+        if (!_isHidden)
+        {
+            return _text;
+        }
+        else
+        {
+            return new string(_text.Select(c => char.IsLetter(c) ? '_' : c).ToArray());
+        }
     }
 }
