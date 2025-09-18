@@ -14,8 +14,7 @@ public class Scripture
 
     public int HideRandomWords(int numberToHide)
     {
-        var visibleWords = _words
-            .Where(w => !w.IsHidden()).ToList();
+        var visibleWords = _words.Where(w => !w.IsHidden()).ToList();
 
         if (!visibleWords.Any())
             return 0;
