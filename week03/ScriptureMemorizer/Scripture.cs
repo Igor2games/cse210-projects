@@ -9,15 +9,27 @@ public class Scripture
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
-        _words = text.Split(' ').Select(w => new Word(w)).ToList();
+        _words = new List<Word>();
+        foreach (string word in text.Split(' '))
+        {
+            _words.Add(new Word(word));
+        }
     }
 
     public int HideRandomWords(int numberToHide)
     {
-        var visibleWords = _words.Where(w => !w.IsHidden()).ToList();
-
-        if (!visibleWords.Any())
+        List<Word> visibleWords = new List<Word>();
+        foreach (Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                visibleWords.Add(word);
+            }
+        }
+        if (visibleWords.Count == 0)
+        {
             return 0;
+        }
 
         int count = Math.Min(numberToHide, visibleWords.Count);
 
@@ -25,7 +37,6 @@ public class Scripture
         {
             int index = _random.Next(visibleWords.Count);
             visibleWords[index].Hide();
-            //Removes it from visibleWords ensuring it wont select the same word twice.
             visibleWords.RemoveAt(index);
         }
         return count;
@@ -33,12 +44,24 @@ public class Scripture
 
     public string GetDisplayText()
     {
-        string wordsText = string.Join(" ", _words.Select(w => w.GetDisplayText()));
+        string wordsText = "";
+        foreach (Word word in _words)
+        {
+            wordsText += word.GetDisplayText() + " ";
+        }
+        wordsText = wordsText.Trim();
         return $"{_reference.GetDisplayText()}: {wordsText}";
     }
 
     public bool IsCompletelyHidden()
     {
-        return _words.All(w => w.IsHidden());
+        foreach (Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

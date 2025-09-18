@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Xml.XPath;
 
 public class Word
 {
@@ -36,7 +37,12 @@ public class Word
         }
         else
         {
-            return new string(_text.Select(c => char.IsLetter(c) ? '_' : c).ToArray());
+            char[] result = new char[_text.Length];
+            for (int i = 0; i < _text.Length; i++)
+            {
+                result[i] = char.IsLetter(_text[i]) ? '_' : _text[i];
+            }
+            return new string(result);
         }
     }
 }
