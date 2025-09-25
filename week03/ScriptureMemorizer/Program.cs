@@ -1,6 +1,6 @@
 using System;
 using System.Net.Quic;
-// Added "visibleWords.RemoveAt(index);" to Scripture class to ensure it doenst choose the same word twice.
+// Added "visibleWords.RemoveAt(index);" to Scripture class to ensure it doesnt choose the same word twice.
 class Program
 {
     static void Main(string[] args)
