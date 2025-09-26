@@ -53,7 +53,7 @@ public class Order
         decimal total = 0m;
         foreach (var product in _products)
         {
-            total += product.GetPricePerUnity();
+            total += product.GetTotalCost();
         }
         return total;
     }
@@ -80,8 +80,7 @@ public class Order
         var label = new StringBuilder();
         label.AppendLine(_customer.GetName());
         label.AppendLine(addr.GetStreet());
-        label.AppendLine($"{addr.GetCity()}, {addr.GetStateOrProvince()}");
-        label.AppendLine(addr.GetCountry());
+        label.AppendLine($"{addr.GetCity()}, {addr.GetStateOrProvince()}, {addr.GetCountry()}");
         return label.ToString().TrimEnd();
     }
 }
