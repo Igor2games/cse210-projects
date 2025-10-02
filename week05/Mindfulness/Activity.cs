@@ -24,9 +24,11 @@ public class Activity
     public void DisplayEndingMessage()
     {
         Console.WriteLine("Well Done!");
-        Thread.Sleep(3000);
+        ShowSpinner(2);
         Console.WriteLine("");
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
+        ShowSpinner(5);
+        Console.Clear();
     }
 
     public void ShowSpinner(int seconds)
@@ -41,7 +43,7 @@ public class Activity
             foreach (string s in animationstrings)
             {
                 Console.Write(s);
-                Thread.Sleep(100);
+                Thread.Sleep(500);
                 Console.Write("\b \b");
             }
         }

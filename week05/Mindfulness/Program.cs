@@ -6,6 +6,7 @@ class Program
     {
         BreathingActivity breathingActivity = new BreathingActivity("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
         string option = "5";
+        Console.Clear();
 
         while (option != "4")
         {
@@ -15,7 +16,7 @@ class Program
 
             if (option == "1")
             {
-                breathingActivity.DisplayStartingMessage();
+                breathingActivity.Run();
             }
         }
         
