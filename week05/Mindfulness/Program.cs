@@ -10,7 +10,7 @@ class Program
 
         while (option != "4")
         {
-            Console.Write($"Menu options:\n   1. Start {breathingActivity.GetName()}\n   4.Quit\nSelect a choice from the menu: ");
+            Console.Write($"Menu options:\n   1. Start {breathingActivity.GetName()}\n   4. Quit\nSelect a choice from the menu: ");
             option = Console.ReadLine();
             Console.WriteLine("");
 

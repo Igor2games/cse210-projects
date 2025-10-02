@@ -14,7 +14,6 @@ public class BreathingActivity : Activity
     public void Run()
     {
         DisplayStartingMessage();
-        Console.Clear();
         Console.WriteLine("Get Ready...");
         ShowSpinner(3);
         Console.WriteLine("");

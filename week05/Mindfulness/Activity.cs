@@ -19,6 +19,7 @@ public class Activity
         Console.Write($"Welcome to the {_name}.\n\n{_description}\n\nHow long, in seconds, would you like for your session? ");
         string input = Console.ReadLine();
         _duration = int.Parse(input);
+        Console.Clear();
     }
 
     public void DisplayEndingMessage()
@@ -43,7 +44,7 @@ public class Activity
             foreach (string s in animationstrings)
             {
                 Console.Write(s);
-                Thread.Sleep(500);
+                Thread.Sleep(300);
                 Console.Write("\b \b");
             }
         }
