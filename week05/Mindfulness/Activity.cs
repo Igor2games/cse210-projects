@@ -5,7 +5,7 @@ public class Activity
     protected string _name;
     protected string _description;
     protected int _duration;
-    
+
 
     public Activity(string name, string description)
     {
@@ -15,7 +15,10 @@ public class Activity
 
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"Welcome to the {_name}.");
+        Console.Clear();
+        Console.Write($"Welcome to the {_name}.\n\n{_description}\n\nHow long, in seconds, would you like for your session? ");
+        string input = Console.ReadLine();
+        _duration = int.Parse(input);
     }
 
     public void DisplayEndingMessage()
@@ -28,7 +31,7 @@ public class Activity
 
     public void ShowSpinner(int seconds)
     {
-        List<string> animationstrings =["|","/","-","\\","|","/","-","\\"];
+        List<string> animationstrings = ["|", "/", "-", "\\", "|", "/", "-", "\\"];
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(seconds);
@@ -52,5 +55,12 @@ public class Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+    }
+
+    public void AskForSeconds()
+    {
+        Console.Write("How long, in seconds, would you like for your session? ");
+        string input = Console.ReadLine();
+        _duration = int.Parse(input);
     }
 }
