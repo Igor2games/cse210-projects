@@ -32,19 +32,23 @@ public class ReflectingActivity : Activity
         Console.WriteLine("Get Ready...");
         ShowSpinner(3);
         Console.WriteLine("");
+
         string prompt = _prompts[_random.Next(_prompts.Count)];
         Console.WriteLine($"Consider the following prompt:\n\n ---{prompt}---\n");
         Console.WriteLine("When you have something in mind, press enter to continue");
         Console.ReadLine();
         Console.Clear();
         Console.WriteLine("");
+
         Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
         Console.Write("You may begin in: ");
         ShowCountDown(8);
         Console.Clear();
+        
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(_duration);
         List<string> nonRepeatList = new List<string>(_questions);
+
         while (DateTime.Now < endTime)
         {
             if (nonRepeatList.Count == 0)
@@ -54,6 +58,7 @@ public class ReflectingActivity : Activity
             int questionIndex = _random.Next(nonRepeatList.Count);
             Console.Write($">{nonRepeatList[questionIndex]} ");
             nonRepeatList.RemoveAt(questionIndex);
+
             ShowSpinner(10);
             Console.WriteLine("");
         }

@@ -6,7 +6,8 @@ class Program
     {
         BreathingActivity breathingActivity = new BreathingActivity("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
         ReflectingActivity reflectingActivity = new ReflectingActivity("Reflecting Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
-        string option = "5";
+        ListingActivity listingActivity = new ListingActivity("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+        string option = "0";
         Console.Clear();
 
         while (option != "4")
@@ -14,6 +15,7 @@ class Program
             Console.WriteLine($"Menu options:");
             Console.WriteLine($"   1. Start {breathingActivity.GetName()}");
             Console.WriteLine($"   2. Start {reflectingActivity.GetName()}");
+            Console.WriteLine($"   3. Start {listingActivity.GetName()}");
             Console.WriteLine("   4. Quit");
             Console.Write("Select a choice from the menu: ");
             option = Console.ReadLine();
@@ -26,6 +28,10 @@ class Program
             else if (option == "2")
             {
                 reflectingActivity.Run();
+            }
+            else if (option == "3")
+            {
+                listingActivity.Run();
             }
         }
         
