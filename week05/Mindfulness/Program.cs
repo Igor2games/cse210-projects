@@ -1,5 +1,5 @@
 using System;
-
+//The Reflecting activity doesnt repeat questions and resets if it goes trough all questions.
 class Program
 {
     static void Main(string[] args)

@@ -49,7 +49,7 @@ public class Activity
             foreach (string s in animationstrings)
             {
                 Console.Write(s);
-                Thread.Sleep(300);
+                Thread.Sleep(200);
                 Console.Write("\b \b");
             }
         }

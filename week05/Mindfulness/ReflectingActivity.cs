@@ -47,8 +47,12 @@ public class ReflectingActivity : Activity
         List<string> nonRepeatList = new List<string>(_questions);
         while (DateTime.Now < endTime)
         {
+            if (nonRepeatList.Count == 0)
+            {
+                nonRepeatList = new List<string>(_questions);
+            }
             int questionIndex = _random.Next(nonRepeatList.Count);
-            Console.Write($"{nonRepeatList[questionIndex]} ");
+            Console.Write($">{nonRepeatList[questionIndex]} ");
             nonRepeatList.RemoveAt(questionIndex);
             ShowSpinner(10);
             Console.WriteLine("");
