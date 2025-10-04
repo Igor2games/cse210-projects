@@ -13,6 +13,11 @@ public class Activity
         _description = description;
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+
     public void DisplayStartingMessage()
     {
         Console.Clear();

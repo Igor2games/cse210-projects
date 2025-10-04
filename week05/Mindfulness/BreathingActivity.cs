@@ -6,11 +6,6 @@ public class BreathingActivity : Activity
         description = _description;
     }
 
-    public string GetName()
-    {
-        return _name;
-    }
-
     public void Run()
     {
         DisplayStartingMessage();

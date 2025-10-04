@@ -6,7 +6,7 @@ public class ReflectingActivity : Activity
         "Think of a time when you helped someone in need.",
         "Think of a time when you did something truly selfless."
     ];
-    private List<string> questions = [
+    private List<string> _questions = [
         "Why was this experience meaningful to you?",
         "Have you ever done anything like this before?",
         "How did you get started?",
@@ -18,6 +18,8 @@ public class ReflectingActivity : Activity
         "How can you keep this experience in mind in the future?"
     ];
 
+    private static readonly Random _random = new Random();
+
     public ReflectingActivity(string name, string description) : base(name, description)
     {
         name = _name;
@@ -27,6 +29,30 @@ public class ReflectingActivity : Activity
     public void Run()
     {
         DisplayStartingMessage();
-        
+        Console.WriteLine("Get Ready...");
+        ShowSpinner(3);
+        Console.WriteLine("");
+        string prompt = _prompts[_random.Next(_prompts.Count)];
+        Console.WriteLine($"Consider the following prompt:\n\n ---{prompt}---\n");
+        Console.WriteLine("When you have something in mind, press enter to continue");
+        Console.ReadLine();
+        Console.Clear();
+        Console.WriteLine("");
+        Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+        Console.Write("You may begin in: ");
+        ShowCountDown(8);
+        Console.Clear();
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        List<string> nonRepeatList = new List<string>(_questions);
+        while (DateTime.Now < endTime)
+        {
+            int questionIndex = _random.Next(nonRepeatList.Count);
+            Console.Write($"{nonRepeatList[questionIndex]} ");
+            nonRepeatList.RemoveAt(questionIndex);
+            ShowSpinner(10);
+            Console.WriteLine("");
+        }
+        DisplayEndingMessage();
     }
 }
