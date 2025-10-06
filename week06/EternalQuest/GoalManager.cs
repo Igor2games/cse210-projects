@@ -107,5 +107,22 @@ public class GoalManager
     public void RecordEvent()
     {
         ListGoalNames();
+        Console.Write("Which Goal did you accomplish? ");
+        string completedI = Console.ReadLine();
+
+        int i = int.Parse(completedI);
+
+        if (_goals[i - 1].IsComplete())
+        {
+            Console.WriteLine("Sorry, that Goal has already been completed.");
+        }
+        else
+        {
+            _goals[i - 1].RecordEvent();
+            _score += _goals[i - 1].GetPoints();
+            Console.WriteLine($"Congratulations! You have earned {_goals[i - 1].GetPoints()} points!");
+            Console.WriteLine($"You now have {_score} points");
+            Console.WriteLine("");
+        }
     }
 }
