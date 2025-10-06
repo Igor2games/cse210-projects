@@ -11,4 +11,9 @@ public abstract class Shape
     {
         return 0;
     }
+
+    public string GetColor()
+    {
+        return _color;
+    }
 }

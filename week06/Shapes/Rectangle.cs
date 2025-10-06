@@ -4,17 +4,18 @@ using System.Reflection.Metadata.Ecma335;
 public class Rectangle : Shape
 {
     private double _lenght;
-    private double _
+    private double _width;
 
-    public Square(double side, string color) : base(color)
+    public Rectangle(string color, double lenght, double width) : base(color)
     {
         _color = color;
-        _side = side;
+        _lenght = lenght;
+        _width = width;
     }
 
     public override double GetArea()
     {
-        double area = _side * _side;
+        double area = _width * _lenght;
         return area;
     }
 }
