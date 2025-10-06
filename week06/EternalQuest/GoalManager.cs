@@ -15,6 +15,9 @@ public class GoalManager
 
         while (menu != "6")
         {
+            DisplayPlayerInfo();
+            Console.WriteLine("");
+
             Console.WriteLine("Menu Options:");
             Console.WriteLine("   1. Ceate New Goal");
             Console.WriteLine("   2. List Goals");
@@ -34,6 +37,11 @@ public class GoalManager
             {
                 ListGoalDetails();
             }
+
+            if (menu == "5")
+            {
+                RecordEvent();
+            }
         }
         
     }
@@ -45,7 +53,14 @@ public class GoalManager
 
     public void ListGoalNames()
     {
-
+        Console.WriteLine("The goals are:");
+        int number = 1;
+        foreach (Goal goal in _goals)
+        {
+            Console.WriteLine($"{number}. {goal.GetName()}");
+            number++;
+        }
+        Console.WriteLine("");
     }
 
     public void ListGoalDetails()
@@ -91,6 +106,6 @@ public class GoalManager
 
     public void RecordEvent()
     {
-        
+        ListGoalNames();
     }
 }

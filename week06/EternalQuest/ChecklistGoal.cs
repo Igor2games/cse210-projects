@@ -15,7 +15,7 @@ public class ChecklisteGoal : Goal
     {
     }
 
-    public override bool _IsComplete()
+    public override bool IsComplete()
     {
        return true;
     }
