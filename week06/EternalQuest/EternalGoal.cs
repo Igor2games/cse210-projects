@@ -25,7 +25,5 @@ public class EternalGoal : Goal
     {
         string text = $"[{_timesCompleted}] {_shortName} ({_description})";
         return text;
-        
-        
     }
 }

@@ -117,6 +117,28 @@ public class GoalManager
             Console.Clear();
         }
 
+        if (newMenu == "3")
+        {
+            Console.Write("What is the name of your goal? ");
+            string name = Console.ReadLine();
+
+            Console.Write("What is a short description of it? ");
+            string description = Console.ReadLine();
+
+            Console.Write("What is the amount of points associated with this Goal? ");
+            string points = Console.ReadLine();
+
+            Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+            string target = Console.ReadLine();
+
+            Console.Write("What is the bonus for accomplishing it that many times? ");
+            string bonus = Console.ReadLine();
+
+            ChecklisteGoal checklisteGoal = new ChecklisteGoal(name, description, points, int.Parse(target), int.Parse(bonus));
+            _goals.Add(checklisteGoal);
+            Console.Clear();
+        }
+
 
     }
 
