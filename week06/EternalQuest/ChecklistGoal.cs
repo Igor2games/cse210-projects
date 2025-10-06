@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 public class ChecklisteGoal : Goal
 {
     private int _amountCompleted;
@@ -18,7 +20,9 @@ public class ChecklisteGoal : Goal
         _amountCompleted += 1;
         if (_amountCompleted == _target)
         {
-            _points += _bonus;
+            int parsedPoints = int.Parse(_points);
+            parsedPoints += _bonus;
+            _points = parsedPoints.ToString();
         }
     }
 
@@ -38,12 +42,12 @@ public class ChecklisteGoal : Goal
     {
         if (IsComplete())
         {
-            string text = $"[X] {_shortName} ({_description} -- Currently completed: {_amountCompleted}/{_target})";
+            string text = $"[X] {_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";
             return text;
         }
         else
         {
-            string text = $"[ ] {_shortName} ({_description} -- Currently completed: {_amountCompleted}/{_target})";
+            string text = $"[ ] {_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";
             return text;
         }
     }
