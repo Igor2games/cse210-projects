@@ -25,7 +25,7 @@ public abstract class Goal
 
     public abstract bool IsComplete();
 
-    public string GetDeatiledString()
+    public virtual string GetDeatiledString()
     {
         if (IsComplete())
         {

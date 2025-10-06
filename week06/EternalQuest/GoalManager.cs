@@ -43,7 +43,6 @@ public class GoalManager
                 RecordEvent();
             }
         }
-        
     }
 
     public void DisplayPlayerInfo()
@@ -101,7 +100,24 @@ public class GoalManager
             _goals.Add(simpleGoal);
             Console.Clear();
         }
-    
+
+        if (newMenu == "2")
+        {
+            Console.Write("What is the name of your goal? ");
+            string name = Console.ReadLine();
+
+            Console.Write("What is a short description of it? ");
+            string description = Console.ReadLine();
+
+            Console.Write("What is the amount of points associated with this Goal? ");
+            string points = Console.ReadLine();
+
+            EternalGoal eternalGoal = new EternalGoal(name, description, points);
+            _goals.Add(eternalGoal);
+            Console.Clear();
+        }
+
+
     }
 
     public void RecordEvent()

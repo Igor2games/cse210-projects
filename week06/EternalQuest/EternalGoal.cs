@@ -1,5 +1,9 @@
+using System.ComponentModel;
+
 public class EternalGoal : Goal
 {
+    private int _timesCompleted = 0;
+    
     public EternalGoal(string name, string description, string points) : base(name, description, points)
     {
         _shortName = name;
@@ -9,11 +13,19 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-        
+        _timesCompleted += 1;
     }
 
     public override bool IsComplete()
     {
-        return true;
+        return false;
+    }
+
+    public override string GetDeatiledString()
+    {
+        string text = $"[{_timesCompleted}] {_shortName} ({_description})";
+        return text;
+        
+        
     }
 }
