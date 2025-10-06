@@ -8,4 +8,18 @@ public class SimpleGoal : Goal
         _description = description;
         _points = points;
     }
+
+    public override void RecordEvent()
+    {
+        _isComplete = true;
+    }
+
+    public override bool _IsComplete()
+    {
+        if (_isComplete == true)
+        {
+            return true;
+        }
+        return false;
+    }
 }

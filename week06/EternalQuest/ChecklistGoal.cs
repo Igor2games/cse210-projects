@@ -10,4 +10,13 @@ public class ChecklisteGoal : Goal
         _description = description;
         _points = points;
     }
+
+    public override void RecordEvent()
+    {
+    }
+
+    public override bool _IsComplete()
+    {
+       return true;
+    }
 }

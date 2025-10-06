@@ -10,4 +10,15 @@ public abstract class Goal
         _description = description;
         _points = points;
     }
+
+
+    public abstract void RecordEvent();
+
+    public abstract bool _IsComplete();
+
+    public string GetDeatiledString()
+    {
+        string text = $"[ ] {_shortName} ({_description})";
+        return text;
+    }
 }
