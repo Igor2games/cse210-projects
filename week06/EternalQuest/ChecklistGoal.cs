@@ -51,4 +51,9 @@ public class ChecklisteGoal : Goal
             return text;
         }
     }
+
+    public override string GetStringRepresentation()
+    {
+        return $"EternalGoal:{_shortName},{_description},{_points},{_target},{_bonus},{_amountCompleted}";
+    }
 }

@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Security.Cryptography;
+using System.IO;
 
 public class GoalManager
 {
@@ -36,6 +37,11 @@ public class GoalManager
             if (menu == "2")
             {
                 ListGoalDetails();
+            }
+
+            if (menu == "3")
+            {
+                SaveGoals();
             }
 
             if (menu == "5")
@@ -161,6 +167,21 @@ public class GoalManager
             Console.WriteLine($"Congratulations! You have earned {_goals[i - 1].GetPoints()} points!");
             Console.WriteLine($"You now have {_score} points");
             Console.WriteLine("");
+        }
+    }
+
+    public void SaveGoals()
+    {
+        Console.Write("What is the filename for the Goal file? ");
+        string filename = Console.ReadLine();
+
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            foreach (Goal goal in _goals)
+            {
+                outputFile.WriteLine(goal.GetStringRepresentation());
+            }
+           
         }
     }
 }

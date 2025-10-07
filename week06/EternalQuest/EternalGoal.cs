@@ -3,7 +3,7 @@ using System.ComponentModel;
 public class EternalGoal : Goal
 {
     private int _timesCompleted = 0;
-    
+
     public EternalGoal(string name, string description, string points) : base(name, description, points)
     {
         _shortName = name;
@@ -25,5 +25,10 @@ public class EternalGoal : Goal
     {
         string text = $"[{_timesCompleted}] {_shortName} ({_description})";
         return text;
+    }
+
+    public override string GetStringRepresentation()
+    {
+        return $"EternalGoal:{_shortName},{_description},{_points},{_timesCompleted}";
     }
 }

@@ -38,4 +38,6 @@ public abstract class Goal
             return text;
         }
     }
+
+    public abstract string GetStringRepresentation();
 }
