@@ -44,6 +44,11 @@ public class GoalManager
                 SaveGoals();
             }
 
+            if (menu == "4")
+            {
+                LoadGoals();
+            }
+
             if (menu == "5")
             {
                 RecordEvent();
@@ -177,11 +182,78 @@ public class GoalManager
 
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
+            outputFile.WriteLine(_score);
             foreach (Goal goal in _goals)
             {
                 outputFile.WriteLine(goal.GetStringRepresentation());
             }
-           
+
+        }
+    }
+    
+    public void LoadGoals()
+    {
+        Console.Write("What is the filename for the Goal file? ");
+        string filename = Console.ReadLine();
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        foreach (string line in lines)
+        {
+            if (line.Contains(":"))
+            {
+                string[] parts = line.Split(":");
+
+                string goalType = parts[0];
+                string goalData = parts[1];
+
+                if (goalType == "SimpleGoal")
+                {
+
+                    string[] dataStrip = goalData.Split(",");
+
+                    string name = dataStrip[0];
+                    string description = dataStrip[1];
+                    string points = dataStrip[2];
+                    bool complete = bool.Parse(dataStrip[3]);
+
+                    SimpleGoal simpleGoal = new SimpleGoal(name, description, points, complete);
+                    _goals.Add(simpleGoal);
+                }
+
+                if (goalType == "EternalGoal")
+                {
+
+                    string[] dataStrip = goalData.Split(",");
+
+                    string name = dataStrip[0];
+                    string description = dataStrip[1];
+                    string points = dataStrip[2];
+                    int timeCompleted = int.Parse(dataStrip[3]);
+
+                    EternalGoal eternalGoal = new EternalGoal(name, description, points, timeCompleted);
+                    _goals.Add(eternalGoal);
+                }
+
+                if (goalType == "ChecklistGoal")
+                {
+
+                    string[] dataStrip = goalData.Split(",");
+
+                    string name = dataStrip[0];
+                    string description = dataStrip[1];
+                    string points = dataStrip[2];
+                    int target = int.Parse(dataStrip[3]);
+                    int bonus = int.Parse(dataStrip[4]);
+                    int timeCompleted = int.Parse(dataStrip[5]);
+
+                    ChecklisteGoal checklisteGoal = new ChecklisteGoal(name, description, points, target, bonus, timeCompleted);
+                    _goals.Add(checklisteGoal);
+                }
+            }
+            else
+            {
+                _score = int.Parse(line);
+            }
         }
     }
 }

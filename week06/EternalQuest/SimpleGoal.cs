@@ -9,6 +9,14 @@ public class SimpleGoal : Goal
         _points = points;
     }
 
+    public SimpleGoal(string name, string description, string points, bool isComplete) : base(name, description, points)
+    {
+        _shortName = name;
+        _description = description;
+        _points = points;
+        _isComplete = isComplete;
+    }
+
     public override void RecordEvent()
     {
         _isComplete = true;

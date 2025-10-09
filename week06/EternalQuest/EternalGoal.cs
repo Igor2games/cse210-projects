@@ -11,6 +11,14 @@ public class EternalGoal : Goal
         _points = points;
     }
 
+    public EternalGoal(string name, string description, string points, int timeCompleted) : base(name, description, points)
+    {
+        _shortName = name;
+        _description = description;
+        _points = points;
+        _timesCompleted = timeCompleted;
+    }
+
     public override void RecordEvent()
     {
         _timesCompleted += 1;

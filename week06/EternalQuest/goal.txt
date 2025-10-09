@@ -1,1 +1,5 @@
-SimpleGoal:test,test,500,False
+1350
+SimpleGoal:test,test,500,True
+EternalGoal:eternal,test,50,2
+ChecklistGoal:Check,test,550,3,500,3
+ChecklistGoal:Check 2,test,100,2,1000,1
