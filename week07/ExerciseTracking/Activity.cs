@@ -12,9 +12,13 @@ public abstract class Activity
     }
 
     public abstract double GetDistance();
-
     public abstract double GetSpeed();
     public abstract double GetPace();
+    public abstract string GetName();
+   
 
-    public abstract void GetSummary();
+    public void GetSummary()
+    {
+        Console.WriteLine($"{_date} {GetName()} ({_lenght} minutes): Distance: {GetDistance()} km, Speed: {GetSpeed()} Kph, Pace: {GetPace()} min per km");
+    }
 }

@@ -1,12 +1,18 @@
 public class RunningActivity : Activity
 {
     private double _distance;
+    private string _name = "Running";
 
     public RunningActivity(string date, int lenght, double distance) : base(date, lenght)
     {
         _date = date;
         _lenght = lenght;
         _distance = distance;
+    }
+
+    public override string GetName()
+    {
+        return _name;
     }
 
     public override double GetDistance()
@@ -22,10 +28,5 @@ public class RunningActivity : Activity
     public override double GetPace()
     {
         return _lenght / _distance;
-    }
-
-    public override void GetSummary()
-    {
-        Console.WriteLine($"{_date} Running ({_lenght} minutes): Distance: {_distance} km, Speed: {GetSpeed()} Kph, Pace: {GetPace()} min per km");
     }
 }
